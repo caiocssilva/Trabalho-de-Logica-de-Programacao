@@ -22,15 +22,15 @@ def cadastrar_novo_livro(identificador):
     print()
 
     # Definimos um identificador global para ser incrementado a cada novo cadastro
-    global identificador_global
+    global id_global
 
     # Solicita ao usuário as informações do livro
-    identificador = int(identificador_global) + 1
-    print(f"ID do Livro: {identificador}")
+    identificador = int(id_global) + 1
+    print(f"ID do Livro: {identificador}");
     nome = input("Nome do LIVRO: ").upper()
     autor = input("Nome do AUTOR: ").upper()
     editora = input("Nome da EDITORA: ").upper()
-    identificador_global += 1
+    id_global += 1
 
     # Cadastros inseridos em dicionários e incluído em lista
     livro = {"ID": identificador, "NOME": nome, "AUTOR": autor, "EDITORA": editora}
@@ -68,11 +68,11 @@ def consultar_livro():
 
             # Opção para consultar TODOS os livros
             if ec == 1:
-                if lista_livros == []:
+                if lista_livro == []:
                     print("Não foi cadastrado nenhum livro.")
                     break
                 else:
-                    for nome in lista_livros:
+                    for nome in lista_livro:
                         print(f"{nome['ID']}º Livro:")
                         print(f"ID: {nome['ID']}")
                         print(f"NOME: {nome['NOME']}")
@@ -84,16 +84,16 @@ def consultar_livro():
             elif ec == 2:
 
                 # Verifica se a lista está vazia antes de prosseguir
-                if lista_livros == []:
+                if lista_livro == []:
                     print("Não foi cadastrado nenhum livro.")
                     break
 
                 escolha = int(input("Informe o ID do livro que deseja consultar: "))
 
-                if escolha <= 0 or escolha > len(lista_livros):
+                if escolha <= 0 or escolha > len(lista_livro):
                     print("Não existe nenhum livro com esse ID.")
 
-                for id in lista_livros:
+                for id in lista_livro:
                     if escolha == id["ID"]:
                         print(f"ID: {id['ID']}")
                         print(f"NOME: {id['NOME']}")
@@ -104,7 +104,7 @@ def consultar_livro():
             elif ec == 3:
 
                 # Verifica se a lista está vazia antes de prosseguir
-                if lista_livros == []:
+                if lista_livro == []:
                     print("Não foi cadastrado nenhum livro.")
                     break
 
@@ -116,7 +116,7 @@ def consultar_livro():
 
                 # Faz uma varredura dentro da lista de livros passando
                 # cada um dos dicionários de livros existentes
-                for livro in lista_livros:
+                for livro in lista_livro:
 
                     # A cada iteração se a escolha for igual ao autor, mostra ao
                     # usuário, os livros daquele autor
@@ -164,7 +164,7 @@ def remover_livro():
     while True:
         try:
             # Verifica se a lista de livros está vazia
-            if not lista_livros:
+            if not lista_livro:
                 print("Não foi cadastrado nenhum livro.")
                 break
 
@@ -174,13 +174,13 @@ def remover_livro():
             # Inicia a variável como FALSE para realizar o controle
             id_encontrado = False
 
-            if er <= 0 or er > len(lista_livros):
+            if er <= 0 or er > len(lista_livro):
                 print("ID Inválido. Por favor, insira um ID válido.")
                 print()
                 continue
 
             # Varre a lista de livros em busca do ID informado
-            for id in lista_livros:
+            for id in lista_livro:
                 # Se encontra o ID fornecido, mostra uma mensagem de confirmação
                 if er == id["ID"]:
                     id_encontrado = True
@@ -188,7 +188,7 @@ def remover_livro():
 
                     # Se o usuário confirmar, a remoção será realizada
                     if escolha == 'S':
-                        lista_livros.remove(id)
+                        lista_livro.remove(id)
                         print(f"Livro {id['NOME']} removido com sucesso.")
                         print()
             if not id_encontrado:
@@ -205,8 +205,8 @@ def remover_livro():
 # PROGRAMA PRINCIPAL
 
 # Declarando variável global e lista vazia
-lista_livros = []
-identificador_global = 0
+lista_livro = []
+id_global = 0
 
 # Estrutura de Menu fora da função
 while True:
@@ -225,12 +225,12 @@ while True:
 
             # Opção para CADASTRAR novo livro
             if menu == 1:
-                novo_livro = cadastrar_novo_livro(identificador_global)
+                novo_livro = cadastrar_novo_livro(id_global)
 
                 # Faz uma iteração dentro da lista passando por cada
                 # um dos dicionários de livro para verificar se
                 # já existe algum livro com o mesmo nome e mesmo autor
-                for livro in lista_livros:
+                for livro in lista_livro:
 
                     # Se encontrar, apresenta ao usuário uma mensagem de
                     # que o livro já existe
@@ -240,14 +240,14 @@ while True:
                         # Altera o valor da variável global para -1
                         # Dessa forma o próximo cadastro recebe o número da
                         # sequência de ID
-                        identificador_global -= 1
+                        id_global -= 1
 
                         # Sai do loop
                         break
                 # Se não existir nenhum livro com mesmo nome e autor
                 # Realiza o cadastro do novo livro
                 else:
-                    lista_livros.append(novo_livro)
+                    lista_livro.append(novo_livro)
                     print(f"Livro {novo_livro['NOME']} cadastrado com sucesso.")
 
             # Opção para CONSULTAR o(s) livro(s) cadastrados
