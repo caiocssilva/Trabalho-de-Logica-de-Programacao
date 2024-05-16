@@ -1,7 +1,7 @@
 #Questão 3
 
 # Função que verifica o serviço escolhido
-def escolha_servico_cliente(pergunta):
+def escolha_servico(pergunta):
 
     print("""
     Entre com o tipo de serviço desejado:\n
@@ -42,7 +42,7 @@ def escolha_servico_cliente(pergunta):
             continue
 
 # Função que recebe e retorna o número de páginas
-def valida_numero_paginas(pergunta):
+def num_paginas(pergunta):
     """
     Essa função solicita ao usuário um número o número de páginas.
     Ela garante que o usuário informe exatamente a opção correta.
@@ -96,7 +96,7 @@ def valida_numero_paginas(pergunta):
             print("Valor inválido. Tente novamente.\n")
 
 # Função que verifica se deseja servico extra e retorna o escolhido
-def servico_extra_cliente(pergunta):
+def servico_extra(pergunta):
     """
         Essa função verifica se o usuário deseja servico extra.
 
@@ -149,13 +149,13 @@ valor_fotocopia = 0.20
 print(f"    Bem vindo a Copiadora do Caio\n")
 
 # Serviço Escolhido pelo cliente recebe o serviço desejado
-servico_escolhido_cliente = escolha_servico_cliente("Qual serviço deseja realizar? ")
+servico_escolhido_cliente = escolha_servico("Qual serviço deseja realizar? ")
 
 # Total de Páginas recebe a quantidade páginas
-total_paginas = valida_numero_paginas("Informe o número de páginas: ")
+total_paginas = num_paginas("Informe o número de páginas: ")
 
 # Extra recebe se o cliente deseja algum serviço extra
-extra_cliente = servico_extra_cliente("""Deseja adicionar algum serviço extra:\n
+extra_cliente = servico_extra("""Deseja adicionar algum serviço extra:\n
     1 - Encadernação Simples - R$ 15.00
     2 - Encadernação Capa Dura - R$ 40.00
     0 - Não desejo mais nada \n""")
