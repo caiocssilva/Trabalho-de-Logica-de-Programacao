@@ -1,7 +1,6 @@
 #Questão 4
 
 # Boas vindas com o nome
-
 print("Bem vindo a Livraria do Caio César")
 
 # Função que cadastra livros recebendo como parâmetro ID
